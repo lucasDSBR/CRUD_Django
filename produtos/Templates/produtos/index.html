@@ -1,0 +1,49 @@
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'produtos/style.css' %}">
+<div class="header">
+    <h3 id="titulo">Aplicação Django</h3>
+</div>
+<form action="{% url 'produtos:cadastro' %}" method="post" class="formulario">
+    {% csrf_token %}
+    <p class="inputParagrafo">
+        <span>Nome:</span>
+        <input tpye='text' name='nome'>
+    </p>
+    <p class="inputParagrafo">
+        <span>Preço:</span>
+        <input tpye='text' name='preco'>
+    </p>
+    <p class="inputParagrafo">
+        <span>Codigo:</span>
+        <input tpye='text' name='codigo'>
+    </p>
+    <p class="inputParagrafo">
+        <span>Fornecedor:</span>
+        <input tpye='text' name='fornecedor'>
+    </p>
+    <p class="inputParagrafo">
+        <span>Total no estoque:</span>
+        <input tpye='text' name='total_estoque'>
+    </p>
+    <input type="submit" value="Cadastrar" class="btnOk">
+</form>
+{% if listaProdutos %}
+    <table class="tabelaProduto">
+        <tr>
+            <th>Nome</th>
+            <th>Preço</th>
+            <th>Quantidade est.</th>
+        </tr>
+        {% for produto in listaProdutos %}
+            <tr>
+                <td>{{produto.prod_Nome}}</td>
+                <td>{{produto.prod_Preco}}</td>
+                <td>{{produto.prod_Total_estoque}}</td>
+            </tr>
+        {% endfor %}
+    </table>      
+{% endif %}
+{% if error_message %}
+<h2>{{error_message}}</h2>
+{% endif %}
