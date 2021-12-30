@@ -1,5 +1,5 @@
 # Polls_Django
-
+<img alt="" title="" src="./imgs/Captura1" />
 python manage.py makemigrations polls
 
 
