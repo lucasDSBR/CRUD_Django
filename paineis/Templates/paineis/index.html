@@ -1,0 +1,22 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'paineis/style.css' %}">
+<div class="header">
+    <a class="logo">Aplicação Django</a>
+    <div class="header-right">
+        <a href="{% url 'paineis:index' %}">Dashboard</a>
+        <a href="{% url 'produtos:index' %}">Produtos</a>
+        <a href="{% url 'vendas:index' %}">Vendas</a>
+    </div>
+</div>
+
+
+{% if graficoVendasRegiao %}
+<div class="graficos">
+    <div class="graficoBarras">
+        {{graficoVendasRegiao|safe}}
+    </div>
+    <div class="graficoBarras">
+        {{graficoVendasMes|safe}}
+    </div>
+</div>
+{% endif %}
