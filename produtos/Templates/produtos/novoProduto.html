@@ -3,11 +3,12 @@
 <div class="header">
     <a class="logo">Aplicação Django</a>
     <div class="header-right">
-        <a href="{% url 'produtos:index' %}">Dashboard</a>
+        <a href="{% url 'paineis:index' %}">Dashboard</a>
         <a href="{% url 'produtos:index' %}">Produtos</a>
-        <a href="#">Vendas</a>
+        <a href="{% url 'vendas:index' %}">Vendas</a>
     </div>
 </div>
+
 <div class="dadosForm">
     <form action="{% url 'produtos:cadastro' %}" method="POST" class="formulario">
         {% csrf_token %}

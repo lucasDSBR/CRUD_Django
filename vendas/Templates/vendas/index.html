@@ -1,0 +1,46 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'produtos/style.css' %}">
+<div class="header">
+    <a class="logo">Aplicação Django</a>
+    <div class="header-right">
+        <a href="{% url 'paineis:index' %}">Dashboard</a>
+        <a href="{% url 'produtos:index' %}">Produtos</a>
+        <a href="{% url 'vendas:index' %}">Vendas</a>
+    </div>
+</div>
+
+{% if listaVendas %}
+    <table class="tabelaVendas">
+        <tr>
+            <th>Codigo</th>
+            <th>Produto</th>
+            <th>Quantidade</th>
+            <th>Valor total</th>
+            <th>Data da venda</th>
+            <th>Região destino</th>
+            <th>Opções</th>
+        </tr>
+        {% for venda in listaVendas %}
+            <tr>
+                <td>{{venda.venda_Cod}}</td>
+                <td>{{venda.venda_Prod}}</td>
+                <td>{{venda.venda_quantidade_produto}}</td>
+                <td>R$ {{venda.venda_total}}</td>
+                <td>{{venda.venda_Data}}</td>
+                <td>{{venda.venda_estado_destino}}</td>
+                <td>
+                    <a href="{% url 'vendas:excluir' venda.id %}" class="btnExcluir">Excluir</a>
+                    <a href="{% url 'vendas:editar' venda.id %}" class="btnEditar">Editar</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+<div class="dadosForm">
+    <p class="inputParagrafo">
+        <a href="{% url 'vendas:novaVenda' %}"><input type="button" href="#" value="Nova venda" class="btnOk"></a>
+    </p>
+</div>      
+{% endif %}
+{% if error_message %}
+<h2>{{error_message}}</h2>
+{% endif %}

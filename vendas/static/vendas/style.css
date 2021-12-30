@@ -20,13 +20,6 @@ body {
     color: #f5dd5d;
 }
 
-.tabelaProduto{
-    border-collapse: collapse;
-    width: 80%;
-    margin: auto;
-    margin-top: 10px;
-}
-
 .tabelaVendas{
     border-collapse: collapse;
     width: 80%;
