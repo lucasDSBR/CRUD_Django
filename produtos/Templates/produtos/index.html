@@ -1,45 +1,31 @@
-
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'produtos/style.css' %}">
 <div class="header">
-    <h3 id="titulo">Aplicação Django</h3>
+    <a class="logo">Aplicação Django</a>
+    <div class="header-right">
+        <a href="{% url 'produtos:index' %}">Dashboard</a>
+        <a href="{% url 'produtos:index' %}">Produtos</a>
+        <a href="#">Vendas</a>
+    </div>
 </div>
-<form action="{% url 'produtos:cadastro' %}" method="post" class="formulario">
-    {% csrf_token %}
-    <p class="inputParagrafo">
-        <span>Nome:</span>
-        <input tpye='text' name='nome'>
-    </p>
-    <p class="inputParagrafo">
-        <span>Preço:</span>
-        <input tpye='text' name='preco'>
-    </p>
-    <p class="inputParagrafo">
-        <span>Codigo:</span>
-        <input tpye='text' name='codigo'>
-    </p>
-    <p class="inputParagrafo">
-        <span>Fornecedor:</span>
-        <input tpye='text' name='fornecedor'>
-    </p>
-    <p class="inputParagrafo">
-        <span>Total no estoque:</span>
-        <input tpye='text' name='total_estoque'>
-    </p>
-    <input type="submit" value="Cadastrar" class="btnOk">
-</form>
+
 {% if listaProdutos %}
     <table class="tabelaProduto">
         <tr>
             <th>Nome</th>
             <th>Preço</th>
             <th>Quantidade est.</th>
+            <th>Ação</th>
         </tr>
         {% for produto in listaProdutos %}
             <tr>
                 <td>{{produto.prod_Nome}}</td>
-                <td>{{produto.prod_Preco}}</td>
+                <td>R${{produto.prod_Preco}}</td>
                 <td>{{produto.prod_Total_estoque}}</td>
+                <td>
+                    <a href="{% url 'produtos:excluir' produto.id %}" class="btnExcluir">Excluir</a>
+                    <a href="{% url 'produtos:editar' produto.id %}" class="btnEditar">Editar</a>
+                </td>
             </tr>
         {% endfor %}
     </table>      
@@ -47,3 +33,8 @@
 {% if error_message %}
 <h2>{{error_message}}</h2>
 {% endif %}
+<div class="dadosForm">
+    <p class="inputParagrafo">
+        <a href="{% url 'produtos:novoProduto' %}"><input type="button" href="#" value="Novo Produto" class="btnOk"></a>
+    </p>
+</div>

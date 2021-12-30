@@ -8,36 +8,33 @@
         <a href="#">Vendas</a>
     </div>
 </div>
-
-{% if produto %}
 <div class="dadosForm">
-    <form action="{% url 'produtos:finalizaredicao'  produto.id %}" method="POST" class="formulario">
+    <form action="{% url 'produtos:cadastro' %}" method="POST" class="formulario">
         {% csrf_token %}
 
             <p class="inputParagrafo">
                 <span class="descricao">Nome:</span>
-                <input tpye='text' name='nome' class="InputText" value="{{produto.prod_Nome}}">
+                <input tpye='text' name='nome' class="InputText">
             </p>
             <p class="inputParagrafo">
                 <span class="descricao">Preço:</span>
-                <input tpye='number' name='preco' class="InputText" value="{{produto.prod_Preco}}">
+                <input tpye='text' name='preco' class="InputText">
             </p>
             <p class="inputParagrafo">
                 <span class="descricao">Codigo:</span>
-                <input tpye='text' name='codigo' class="InputText" value="{{produto.prod_Codigo}}">
+                <input tpye='text' name='codigo' class="InputText">
             </p>
             <p class="inputParagrafo">
                 <span class="descricao">Fornecedor:</span>
-                <input tpye='text' name='fornecedor' class="InputText" value="{{produto.prod_Fornecedor}}">
+                <input tpye='text' name='fornecedor' class="InputText">
             </p>
             <p class="inputParagrafo">
                 <span class="descricao">Total no estoque:</span>
-                <input tpye='text' name='total_estoque' class="InputText" value="{{produto.prod_Total_estoque}}">
+                <input tpye='text' name='total_estoque' class="InputText">
             </p>
             <p class="inputParagrafo">
-                <input type="submit" value="Editar" class="btnOk">
+                <input type="submit" value="Cadastrar" class="btnOk">
             </p>
                 
     </form>
 </div>
-{% endif %}
