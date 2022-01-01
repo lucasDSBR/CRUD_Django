@@ -1,4 +1,4 @@
-# Polls_Django
+# CRUD_Django
 ## Dashboard
 <img alt="" title="" src="https://github.com/lucasDSBR/Polls_Django/blob/master/imgs/Capturar1.PNG" />
 
